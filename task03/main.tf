@@ -19,6 +19,19 @@ resource "azurerm_storage_account" "sa" {
   tags = {
     Creator = var.creator
   }
+
+  network_rules {
+    default_action             = "Deny"
+    bypass                     = ["AzureServices"]
+    ip_rules                   = []
+    virtual_network_subnet_ids = []
+  }
+  
+  blob_properties {
+    container_delete_retention_policy {
+      days = 7
+    }
+  }
 }
 
 resource "azurerm_virtual_network" "vnet" {
