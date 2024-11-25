@@ -26,7 +26,7 @@ resource "azurerm_storage_account" "sa" {
     ip_rules                   = []
     virtual_network_subnet_ids = []
   }
-  
+
   blob_properties {
     container_delete_retention_policy {
       days = 7
