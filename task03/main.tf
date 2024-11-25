@@ -11,11 +11,13 @@ resource "azurerm_resource_group" "this" {
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = var.storage_account_name
-  resource_group_name      = data.azurerm_resource_group.existing.name
-  location                 = data.azurerm_resource_group.existing.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+  name                            = var.storage_account_name
+  resource_group_name             = data.azurerm_resource_group.existing.name
+  location                        = data.azurerm_resource_group.existing.location
+  account_tier                    = "Standard"
+  account_replication_type        = "LRS"
+  public_network_access_enabled   = false
+  allow_nested_items_to_be_public = false
   tags = {
     Creator = var.creator
   }
